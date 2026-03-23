@@ -59,15 +59,25 @@ PALETTES: dict[str, tuple[list[str], list[str]]] = {
     ),
 }
 
-# Maps month to season (Northern Hemisphere)
-MONTH_TO_SEASON: dict[int, str] = {
-    1: "winter", 2: "winter", 3: "spring", 4: "spring", 5: "spring", 6: "summer",
-    7: "summer", 8: "summer", 9: "autumn", 10: "autumn", 11: "autumn", 12: "winter",
-}
+# Approximate equinox/solstice boundaries (month, day) for Northern Hemisphere
+_SEASON_BOUNDARIES = [
+    ((3, 20), "spring"),
+    ((6, 21), "summer"),
+    ((9, 22), "autumn"),
+    ((12, 21), "winter"),
+]
 
 
 def _get_seasonal_palette() -> str:
-    return MONTH_TO_SEASON[date.today().month]
+    today = date.today()
+    md = (today.month, today.day)
+    if md >= (12, 21) or md < (3, 20):
+        return "winter"
+    if md >= (9, 22):
+        return "autumn"
+    if md >= (6, 21):
+        return "summer"
+    return "spring"
 
 
 def _pick_cell(common: list[str], weights: list[float]) -> str:
