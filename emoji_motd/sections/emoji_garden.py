@@ -112,8 +112,8 @@ def render(config: dict, context: dict) -> list[str]:
     cols = min(int(width * 0.6), 50)
     total_cells = rows * cols
 
-    # Place 2-3 rare glyphs across the entire grid
-    num_rare = random.randint(2, 3)
+    # Place 3-5 rare glyphs across the entire grid
+    num_rare = random.randint(3, 5)
     rare_positions = set(random.sample(range(total_cells), min(num_rare, total_cells)))
 
     lines = []
