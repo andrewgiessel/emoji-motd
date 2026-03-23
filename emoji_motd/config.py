@@ -16,7 +16,7 @@ THEMES: dict[str, list[dict]] = {
     "garden": [
         {"name": "emoji_garden", "rows": 4, "density": "medium", "palette": "seasonal"},
         {"name": "blank", "lines": 1},
-        {"name": "oblique", "align": "left", "indent": 2},
+        {"name": "oblique"},
     ],
     "night": [
         {"name": "starfield", "rows": 3, "density": "medium"},
